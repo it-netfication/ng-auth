@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12 offset-lg-4 offset-md-3">
+      <div class="card text-bg-light mt-5">
+        @if (mfaData?.isConfigured && !isConfiguringMFA) {
+        <div class="card-body">
+          <div class="text-success">MFA Already configured!</div>
+          <p class="text-form">
+            User Have already configured the MFA using the AUthenticator Mobile
+            App. You may setup the MFA again, by clicking on the Setup MFA
+            Authentication button.
+          </p>
+          <button
+            type="button"
+            class="btn btn-outline-primary align-self-end"
+            (click)="editMFA()"
+          >
+            <fa-icon [icon]="faEdit"></fa-icon>
+            Setup MFA Authentication
+          </button>
+        </div>
+        } @else if (mfaData && isConfiguringMFA) {
+        <!-- Setup Authenticator app -->
+
+        <div class="card-body">
+          <h3>Setup Authenticator app</h3>
+          <p class="text-form">
+            Generate one-time passwords that are used as a second factor to
+            verify your identity when prompted during login.
+          </p>
+
+          <strong>Scan the QR code</strong>
+          <p>Use an authenticator app or browser extension to scan.</p>
+
+          <img
+            class="img-fluid img-responsive mb-3"
+            [src]="mfaData.qrImageData"
+            width="200"
+          />
+
+          <form
+            *ngIf="mfaConfigurationForm"
+            [formGroup]="mfaConfigurationForm"
+            (submit)="onSubmitMFAConfigurationForm()"
+          >
+            <div class="form-floating mb-3">
+              <input
+                id="code"
+                class="form-control"
+                type="text"
+                placeholder="MFA Code"
+                formControlName="code"
+                [class.is-invalid]="
+                  mfaConfigurationForm.controls['code'].invalid &&
+                  mfaConfigurationForm.controls['code'].touched
+                "
+              />
+              <label for="code" class="form-label">MFA Code</label>
+              <form-error
+                [control]="mfaConfigurationForm.controls['code']"
+              ></form-error>
+            </div>
+
+            <button class="btn btn-primary w-100" type="submit">
+              Verify Code
+            </button>
+          </form>
+        </div>
+
+        }
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginMfaFormComponent } from './login-mfa-form/login-mfa-form.component';
+import { MfaRegistrationFormComponent } from './mfa-registration-form/mfa-registration-form.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LoginMfaFormComponent } from './login-mfa-form/login-mfa-form.component
     ForgotPasswordFormComponent,
     ResetPasswordFormComponent,
     LoginMfaFormComponent,
+    MfaRegistrationFormComponent,
   ],
   imports: [CommonModule, AuthRoutingModule, SharedModule],
 })
