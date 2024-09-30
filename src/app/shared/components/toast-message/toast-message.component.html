@@ -1,0 +1,21 @@
+<div
+  class="position-fixed top-0 end-0 m-3"
+  aria-live="polite"
+  aria-atomic="true"
+>
+  <ngb-toast
+    *ngFor="let toast of toastMessageService.toasts"
+    class="mb-3"
+    [ngClass]="{
+      'text-white': toast.status === 'success' || toast.status === 'error',
+      'bg-success': toast.status === 'success',
+      'bg-danger': toast.status === 'error',
+    }"
+    [header]="toast.headingText"
+    [autohide]="toast.autoHide || true"
+    [delay]="toast.delay || 5000"
+    (hidden)="toastMessageService.remove(toast)"
+  >
+    <strong>{{ toast.message }}</strong>
+  </ngb-toast>
+</div>

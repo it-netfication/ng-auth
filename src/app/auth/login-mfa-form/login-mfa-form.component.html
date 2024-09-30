@@ -1,0 +1,27 @@
+<!-- ------ 2nd Factor Login -->
+<p class="form-text">
+  MFA challenge is configured, please enter MFA code to complete login process.
+</p>
+<form
+  *ngIf="loginMFAForm"
+  [formGroup]="loginMFAForm"
+  (submit)="submitLoginMFAForm()"
+>
+  <div class="form-floating mb-3">
+    <input
+      id="code"
+      class="form-control"
+      type="text"
+      placeholder="MFA Code"
+      formControlName="code"
+      [class.is-invalid]="
+        loginMFAForm.controls['code'].invalid &&
+        loginMFAForm.controls['code'].touched
+      "
+    />
+    <label for="code" class="form-label">MFA Code</label>
+    <form-error [control]="loginMFAForm.controls['code']"></form-error>
+  </div>
+
+  <button class="btn btn-primary w-100" type="submit">Login</button>
+</form>
