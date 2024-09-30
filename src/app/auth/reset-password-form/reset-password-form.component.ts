@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { ToastMessageService } from '../../services/toast-message/toast-message.service';
 import { passwordMatchValidator } from '../../shared/validators/password-match-validator';
@@ -15,7 +16,10 @@ export class ResetPasswordFormComponent {
   faEye = faEye;
   faEyeSlash = faEyeSlash;
 
-  constructor(private toastMessageService: ToastMessageService) {
+  constructor(
+    private toastMessageService: ToastMessageService,
+    private router: Router
+  ) {
     this.initResetPasswordForm();
   }
 
@@ -42,7 +46,7 @@ export class ResetPasswordFormComponent {
       this.resetPasswordForm.markAllAsTouched();
       return;
     }
-    console.log('Reset Password Form...', this.resetPasswordForm);
     this.toastMessageService.showSuccessMessage('Password reset successfully!');
+    this.router.navigate(['/', 'auth', 'login']);
   }
 }

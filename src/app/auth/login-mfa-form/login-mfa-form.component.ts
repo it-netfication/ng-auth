@@ -26,7 +26,6 @@ export class LoginMfaFormComponent {
       return;
     }
 
-    console.log('2nd Form login', this.loginMFAForm?.value);
     this.toastMessageService.showSuccessMessage(
       'Logged in with MFA successfully!',
       'MFA Login Success!',

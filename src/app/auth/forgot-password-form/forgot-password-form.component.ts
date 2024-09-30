@@ -25,11 +25,6 @@ export class ForgotPasswordFormComponent {
       this.forgotPasswordForm.markAllAsTouched();
       return;
     }
-    console.log('Forgot Password Form...', this.forgotPasswordForm);
-    this.router.navigate(['/', 'auth', 'reset'], {
-      queryParams: {
-        id: 'dGVzdA==',
-      },
-    });
+    this.router.navigate(['/', 'auth', 'reset-password']);
   }
 }

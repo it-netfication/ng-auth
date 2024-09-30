@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'app',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
 ];

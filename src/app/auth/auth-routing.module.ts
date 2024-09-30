@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'forgot', component: ForgotPasswordFormComponent },
-  { path: 'reset', component: ResetPasswordFormComponent },
+  { path: 'reset-password', component: ResetPasswordFormComponent },
   { path: '', redirectTo: 'signup', pathMatch: 'full' },
 ];
 

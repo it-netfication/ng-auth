@@ -15,8 +15,6 @@ export class ToastMessageService {
     delay?: number,
     autoHide?: boolean
   ) {
-    console.log('error message...');
-
     this.toasts.push({
       status: 'error',
       headingText: headingText ?? 'Error!',
@@ -32,7 +30,6 @@ export class ToastMessageService {
     delay?: number,
     autoHide?: boolean
   ) {
-    console.log('success message...');
     this.toasts.push({
       status: 'success',
       headingText: headingText ?? 'Success!',
@@ -48,8 +45,6 @@ export class ToastMessageService {
     delay?: number,
     autoHide?: boolean
   ) {
-    console.log('toast message...');
-
     this.toasts.push({
       status: '',
       headingText: headingText ?? '',

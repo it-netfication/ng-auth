@@ -3,7 +3,7 @@
   [class.d-block]="control.invalid && control.touched"
   class="invalid-feedback"
 >
-  <!-- @if (control.hasError('required')) { {{ controlName }} is required } @else if
+  @if (control.hasError('required')) { {{ controlName }} is required } @else if
   (control.hasError('email')) { The email address is invalid } @else if
   (control.hasError('mustBeUnique')) { The value must be unique } @else if
   (control.hasError('minlength')) { {{ controlName }} must contains at least
@@ -11,36 +11,5 @@
   (control.hasError('maxlength')) { Maximum
   {{ control.errors?.["maxlength"].requiredLength }} characters are allowed in
   {{ controlName }} } @else if (control.hasError('passwordMismatch')) { Password
-  do not match } @else { {{ controlName }} is invalid } -->
-
-  <ng-container *ngIf="control.hasError('required')">
-    {{ controlName }} is required
-  </ng-container>
-
-  <ng-container *ngIf="control.hasError('email')">
-    The email address is invalid
-  </ng-container>
-
-  <ng-container *ngIf="control.hasError('mustBeUnique')">
-    The value must be unique
-  </ng-container>
-
-  <ng-container *ngIf="control.hasError('minlength')">
-    {{ controlName }} must contains at least
-    {{ control.errors?.["minlength"].requiredLength }} characters
-  </ng-container>
-
-  <ng-container *ngIf="control.hasError('maxlength')">
-    Maximum
-    {{ control.errors?.["maxlength"].requiredLength }} characters are allowed in
-    {{ controlName }}
-  </ng-container>
-
-  <ng-container *ngIf="control.hasError('passwordMismatch')">
-    Password do not match
-  </ng-container>
-
-  <ng-container *ngIf="control.hasError('pattern')">
-    {{ controlName }} is invalid
-  </ng-container>
+  do not match } @else { {{ controlName }} is invalid }
 </div>

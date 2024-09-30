@@ -30,14 +30,8 @@ export class LoginFormComponent {
   submitLoginForm() {
     if (this.loginForm?.invalid) {
       this.loginForm.markAllAsTouched();
-      this.toastMessageService.showErrorMessage(
-        'Invalid form submitted!',
-        'Login Error'
-      );
-
       return;
     }
-    console.log('Login Form...', this.loginForm);
 
     this.toastMessageService.showSuccessMessage(
       'Login form submitted successfully!'

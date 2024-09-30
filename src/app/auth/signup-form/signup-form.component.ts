@@ -1,8 +1,9 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { passwordMatchValidator } from '../../shared/validators/password-match-validator';
+import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { ToastMessageService } from '../../services/toast-message/toast-message.service';
+import { passwordMatchValidator } from '../../shared/validators/password-match-validator';
 
 @Component({
   selector: 'app-signup-form',
@@ -15,7 +16,10 @@ export class SignupFormComponent {
   faEye = faEye;
   faEyeSlash = faEyeSlash;
 
-  constructor(private toastMessageService: ToastMessageService) {
+  constructor(
+    private toastMessageService: ToastMessageService,
+    private router: Router
+  ) {
     this.initSignupForm();
   }
 
@@ -47,14 +51,14 @@ export class SignupFormComponent {
   }
 
   submitSignupForm() {
-    console.log('signup Form...', this.signupForm);
     if (this.signupForm?.invalid) {
       this.signupForm.markAllAsTouched();
       return;
     }
-    console.log('going to submit and showing success toast message');
     this.toastMessageService.showSuccessMessage(
       'Your account registered successfully!'
     );
+
+    this.router.navigate(['/', 'auth', 'login']);
   }
 }

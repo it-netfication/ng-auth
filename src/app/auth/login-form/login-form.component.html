@@ -55,13 +55,13 @@
                 [control]="loginForm.controls['password']"
               ></form-error>
             </div>
-            
+
             <div class="mb-3">
               <a [routerLink]="['/', 'auth', 'forgot']">Forgot Password</a>
             </div>
-            
+
             <button class="btn btn-primary w-100" type="submit">Login</button>
-            
+
             <p class="form-text text-center">
               Don't have an account?
               <a [routerLink]="['/', 'auth', 'signup']">Register</a>
@@ -69,7 +69,7 @@
           </form>
 
           <!-- Login with MFA -->
-           <app-login-mfa-form *ngIf="isMFA"></app-login-mfa-form>
+          <app-login-mfa-form *ngIf="isMFA"></app-login-mfa-form>
         </div>
       </div>
     </div>

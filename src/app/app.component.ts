@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ToastMessageService } from './services/toast-message/toast-message.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +6,7 @@ import { ToastMessageService } from './services/toast-message/toast-message.serv
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'netfication-ui';
+  title = 'ng-auth-ui';
 
   constructor() {}
 }
