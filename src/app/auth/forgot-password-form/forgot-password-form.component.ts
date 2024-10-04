@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormInputFieldTypeEnum } from '../../enums/form-input-field-type.enum';
 
 @Component({
   selector: 'app-forgot-password-form',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ForgotPasswordFormComponent {
   forgotPasswordForm: FormGroup | undefined;
+  formInputFieldTypeEnum = FormInputFieldTypeEnum;
 
   constructor(private router: Router) {
     this.initForgotPasswordForm();

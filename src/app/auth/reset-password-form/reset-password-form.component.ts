@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+import { FormInputFieldTypeEnum } from '../../enums/form-input-field-type.enum';
 import { ToastMessageService } from '../../services/toast-message/toast-message.service';
 import { passwordMatchValidator } from '../../shared/validators/password-match-validator';
 
@@ -13,8 +13,7 @@ import { passwordMatchValidator } from '../../shared/validators/password-match-v
 export class ResetPasswordFormComponent {
   resetPasswordForm: FormGroup | undefined;
   hide = signal(true);
-  faEye = faEye;
-  faEyeSlash = faEyeSlash;
+  formInputFieldTypeEnum = FormInputFieldTypeEnum;
 
   constructor(
     private toastMessageService: ToastMessageService,

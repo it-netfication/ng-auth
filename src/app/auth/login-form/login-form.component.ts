@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+import { FormInputFieldTypeEnum } from '../../enums/form-input-field-type.enum';
 import { ToastMessageService } from '../../services/toast-message/toast-message.service';
 
 @Component({
@@ -11,9 +11,8 @@ import { ToastMessageService } from '../../services/toast-message/toast-message.
 export class LoginFormComponent {
   loginForm: FormGroup;
   hide = signal(true);
-  faEye = faEye;
-  faEyeSlash = faEyeSlash;
   isMFA: boolean = false;
+  formInputFieldTypeEnum = FormInputFieldTypeEnum;
 
   constructor(private toastMessageService: ToastMessageService) {
     this.loginForm = new FormGroup({

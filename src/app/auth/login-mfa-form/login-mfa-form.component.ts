@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormInputFieldTypeEnum } from '../../enums/form-input-field-type.enum';
 import { ToastMessageService } from '../../services/toast-message/toast-message.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ToastMessageService } from '../../services/toast-message/toast-message.
 })
 export class LoginMfaFormComponent {
   loginMFAForm: FormGroup | undefined;
+  formInputFieldTypeEnum = FormInputFieldTypeEnum;
 
   constructor(private toastMessageService: ToastMessageService) {
     this.initLoginMFAForm();

@@ -7,6 +7,6 @@ import { AbstractControl } from '@angular/forms';
   styleUrl: './form-error.component.scss',
 })
 export class FormErrorComponent {
-  @Input() control: AbstractControl | undefined;
+  @Input() control: AbstractControl | null | undefined;
   @Input() controlName: string = 'This field';
 }

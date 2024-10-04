@@ -7,21 +7,12 @@
   [formGroup]="loginMFAForm"
   (submit)="submitLoginMFAForm()"
 >
-  <div class="form-floating mb-3">
-    <input
-      id="code"
-      class="form-control"
-      type="text"
-      placeholder="MFA Code"
-      formControlName="code"
-      [class.is-invalid]="
-        loginMFAForm.controls['code'].invalid &&
-        loginMFAForm.controls['code'].touched
-      "
-    />
-    <label for="code" class="form-label">MFA Code</label>
-    <form-error [control]="loginMFAForm.controls['code']"></form-error>
-  </div>
+  <form-input-field
+    [control]="loginMFAForm.controls['code']"
+    controlName="code"
+    label="MFA Code"
+    [type]="formInputFieldTypeEnum.TEXT"
+  ></form-input-field>
 
   <button class="btn btn-primary w-100" type="submit">Login</button>
 </form>
