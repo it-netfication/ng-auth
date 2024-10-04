@@ -10,51 +10,26 @@
             (submit)="submitLoginForm()"
             novalidate
           >
-            <div class="form-floating mb-3">
-              <input
-                id="email"
-                class="form-control"
-                type="text"
-                placeholder="Email Address"
-                formControlName="email"
-                [class.is-invalid]="
-                  loginForm.controls['email'].invalid &&
-                  loginForm.controls['email'].touched
-                "
-              />
-              <label for="email" class="form-label">Email Address</label>
-              <form-error [control]="loginForm.controls['email']"></form-error>
-            </div>
-            <div class="mb-3">
-              <div class="input-group">
-                <div class="form-floating">
-                  <input
-                    id="password"
-                    class="form-control"
-                    placeholder="Password"
-                    formControlName="password"
-                    [type]="hide() ? 'password' : 'text'"
-                    [class.is-invalid]="
-                      loginForm.controls['password'].invalid &&
-                      loginForm.controls['password'].touched
-                    "
-                    aria-describedby="password-eye-icon"
-                  />
-                  <label for="password">Password</label>
-                </div>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  id="password-eye-icon"
-                  (click)="toggleVisibility($event)"
-                >
-                  <fa-icon [icon]="hide() ? faEyeSlash : faEye"></fa-icon>
-                </button>
-              </div>
-              <form-error
-                [control]="loginForm.controls['password']"
-              ></form-error>
-            </div>
+            <form-input-field
+              [control]="loginForm.controls['email']"
+              controlName="email"
+              label="Email Address"
+              [type]="formInputFieldTypeEnum.EMAIL"
+            ></form-input-field>
+
+            <form-input-field
+              [control]="loginForm.controls['password']"
+              controlName="password"
+              label="Password"
+              [type]="
+                hide()
+                  ? formInputFieldTypeEnum.PASSWORD
+                  : formInputFieldTypeEnum.TEXT
+              "
+              [icon]="hide() ? 'heroEyeSlash' : 'heroEye'"
+              [canClickIcon]="true"
+              (inputIconClick)="toggleVisibility($event)"
+            ></form-input-field>
 
             <div class="mb-3">
               <a [routerLink]="['/', 'auth', 'forgot']">Forgot Password</a>

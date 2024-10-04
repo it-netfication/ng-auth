@@ -13,146 +13,71 @@
             (submit)="submitSignupForm()"
             novalidate
           >
-            <div class="form-floating mb-3">
-              <input
-                id="firstName"
-                class="form-control"
-                type="text"
-                placeholder="First Name"
-                formControlName="firstName"
-                [class.is-invalid]="
-                  signupForm.controls['firstName'].invalid &&
-                  signupForm.controls['firstName'].touched
-                "
-              />
-              <label for="firstName" class="form-label">First Name</label>
-              <form-error
-                [control]="signupForm.controls['firstName']"
-              ></form-error>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                id="lastName"
-                class="form-control"
-                type="text"
-                placeholder="Last Name"
-                formControlName="lastName"
-                [class.is-invalid]="
-                  signupForm.controls['lastName'].invalid &&
-                  signupForm.controls['lastName'].touched
-                "
-              />
-              <label for="lastName" class="form-label">Last Name</label>
-              <form-error
-                [control]="signupForm.controls['lastName']"
-              ></form-error>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                id="phone"
-                class="form-control"
-                type="text"
-                placeholder="First Name"
-                formControlName="phone"
-                [class.is-invalid]="
-                  signupForm.controls['phone'].invalid &&
-                  signupForm.controls['phone'].touched
-                "
-              />
-              <label for="phone" class="form-label">Phone Number</label>
-              <form-error [control]="signupForm.controls['phone']"></form-error>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                id="email"
-                class="form-control"
-                type="text"
-                placeholder="Email Address"
-                formControlName="email"
-                [class.is-invalid]="
-                  signupForm.controls['email'].invalid &&
-                  signupForm.controls['email'].touched
-                "
-              />
-              <label for="email" class="form-label">Email Address</label>
-              <form-error [control]="signupForm.controls['email']"></form-error>
-            </div>
-            <div class="mb-3">
-              <div class="input-group">
-                <div class="form-floating">
-                  <input
-                    id="password"
-                    class="form-control"
-                    placeholder="Password"
-                    formControlName="password"
-                    [type]="hide() ? 'password' : 'text'"
-                    [class.is-invalid]="
-                      signupForm.controls['password'].invalid &&
-                      signupForm.controls['password'].touched
-                    "
-                    aria-describedby="password-eye-icon"
-                  />
-                  <label for="password">Password</label>
-                </div>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  id="password-eye-icon"
-                  (click)="toggleVisibility($event)"
-                >
-                  <fa-icon [icon]="hide() ? faEyeSlash : faEye"></fa-icon>
-                </button>
-              </div>
-              <form-error
-                [control]="signupForm.controls['password']"
-              ></form-error>
-            </div>
-            <div class="mb-3">
-              <div class="input-group has-validation">
-                <div class="form-floating">
-                  <input
-                    id="confirmPassword"
-                    class="form-control"
-                    placeholder="Confirm Password"
-                    formControlName="confirmPassword"
-                    [type]="hide() ? 'password' : 'text'"
-                    [class.is-invalid]="
-                      signupForm.controls['confirmPassword'].invalid &&
-                      signupForm.controls['confirmPassword'].touched
-                    "
-                    aria-describedby="confirm-password-eye-icon"
-                  />
-                  <label for="confirmPassword">Confirm Password</label>
-                </div>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  id="confirm-password-eye-icon"
-                  (click)="toggleVisibility($event)"
-                >
-                  <fa-icon [icon]="hide() ? faEyeSlash : faEye"></fa-icon>
-                </button>
-              </div>
-              <form-error
-                [control]="signupForm.controls['confirmPassword']"
-              ></form-error>
-            </div>
-            <div class="mb-3">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="agreeTermsConditions"
-                  formControlName="agreeTerms"
-                />
-                <label class="form-check-label" for="agreeTermsConditions">
-                  I agree to the <a href="#">Terms and conditions</a>
-                </label>
-              </div>
-              <form-error
-                [control]="signupForm.controls['agreeTerms']"
-              ></form-error>
-            </div>
+            <form-input-field
+              [control]="signupForm.controls['firstName']"
+              controlName="firstName"
+              label="First Name"
+              [type]="formInputFieldTypeEnum.TEXT"
+            ></form-input-field>
+
+            <form-input-field
+              [control]="signupForm.controls['lastName']"
+              controlName="lastName"
+              label="Last Name"
+              [type]="formInputFieldTypeEnum.TEXT"
+            ></form-input-field>
+
+            <form-input-field
+              [control]="signupForm.controls['phone']"
+              controlName="phone"
+              label="phone Number"
+              [type]="formInputFieldTypeEnum.TEXT"
+            ></form-input-field>
+
+            <form-input-field
+              [control]="signupForm.controls['email']"
+              controlName="email"
+              label="Email Address"
+              [type]="formInputFieldTypeEnum.EMAIL"
+            ></form-input-field>
+
+            <form-input-field
+              [control]="signupForm.controls['password']"
+              controlName="password"
+              label="Password"
+              [type]="
+                hide()
+                  ? formInputFieldTypeEnum.PASSWORD
+                  : formInputFieldTypeEnum.TEXT
+              "
+              [icon]="hide() ? 'heroEyeSlash' : 'heroEye'"
+              [canClickIcon]="true"
+              (inputIconClick)="toggleVisibility($event)"
+            ></form-input-field>
+
+            <form-input-field
+              [control]="signupForm.controls['confirmPassword']"
+              controlName="confirmPassword"
+              label="Confirm Password"
+              [type]="
+                hide()
+                  ? formInputFieldTypeEnum.PASSWORD
+                  : formInputFieldTypeEnum.TEXT
+              "
+              [icon]="hide() ? 'heroEyeSlash' : 'heroEye'"
+              [canClickIcon]="true"
+              (inputIconClick)="toggleVisibility($event)"
+            ></form-input-field>
+
+            <form-input-field
+              [control]="signupForm.controls['agreeTerms']"
+              controlName="agreeTerms"
+              [type]="formInputFieldTypeEnum.CHECKBOX"
+            >
+              <span class="labelCustomText">
+                I agree to the <a href="#">Terms and conditions</a>
+              </span>
+            </form-input-field>
 
             <button class="btn btn-primary w-100" type="submit">Signup</button>
             <p class="form-text text-center">
