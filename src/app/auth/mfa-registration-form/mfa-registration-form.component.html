@@ -15,7 +15,7 @@
             class="btn btn-outline-primary align-self-end"
             (click)="editMFA()"
           >
-            <fa-icon [icon]="faEdit"></fa-icon>
+            <ng-icon name="heroPencil" size="1.5em"></ng-icon>
             Setup MFA Authentication
           </button>
         </div>
@@ -37,6 +37,11 @@
             [src]="mfaData.qrImageData"
             width="200"
           />
+
+          <p>
+            Unable to scan? Enter <span>{{ mfaData.secretKey }}</span> in your
+            Authenticator app.
+          </p>
 
           <form
             *ngIf="mfaConfigurationForm"
