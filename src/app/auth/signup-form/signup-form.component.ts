@@ -38,7 +38,7 @@ export class SignupFormComponent {
           Validators.minLength(8),
         ]),
         confirmPassword: new FormControl('', [Validators.required]),
-        agreeTerms: new FormControl(false, [Validators.requiredTrue]),
+        agreeTerms: new FormControl(false, Validators.requiredTrue),
       },
       { validators: passwordMatchValidator() }
     );

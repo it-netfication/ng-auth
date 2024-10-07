@@ -22,7 +22,7 @@ import { FormInputFieldTypeEnum } from '../../../enums/form-input-field-type.enu
             [formControlName]="controlName"
             [id]="controlName"
             [name]="controlName"
-            [class]="
+            [ngClass]="
               type == formInputFieldTypeEnum.CHECKBOX
                 ? 'form-check-input'
                 : 'form-control'
@@ -30,6 +30,7 @@ import { FormInputFieldTypeEnum } from '../../../enums/form-input-field-type.enu
             [type]="type"
             [placeholder]="label || controlName"
             [class.is-invalid]="control?.invalid && control?.touched"
+            (change)="onCheckboxChange($event)"
           />
           <label [for]="controlName" class="form-label">
             {{ label }}
@@ -77,5 +78,12 @@ export class FormInputFieldComponent {
 
   iconClicked(ev: any) {
     this.inputIconClick.emit(ev);
+  }
+
+  onCheckboxChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (this.control && this.type == this.formInputFieldTypeEnum.CHECKBOX) {
+      this.control.setValue(input.checked);
+    }
   }
 }
